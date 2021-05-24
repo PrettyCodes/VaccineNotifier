@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 # Enter the below details before starting
-pin_code = "302017"
+pin_code = "PIN_CODE"
 host_email = "YOUR_EMAIL_ID"
 host_email_pass = "YOUR_EMAIL_PASS"
 receivers = "RECEIVERS_EMAIL_ID"
