@@ -92,6 +92,7 @@ while True:
         find_appointments(centers)
     except:
         print("API Error, will try again!")
+        time.sleep(5)
     else:
         time.sleep(10) # If rush time, decrease this. If chill time, increase this.
         chk_no+=1
