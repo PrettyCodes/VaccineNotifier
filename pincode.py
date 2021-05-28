@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 # Enter the below details before starting
-pin_code = "PIN_CODE"
+pin_codes = ["YOUR_PINCODE/S"] # Eg: [302021, 302017]
 host_email = "YOUR_EMAIL_ID"
 host_email_pass = "YOUR_EMAIL_PASS"
 receivers = "RECEIVERS_EMAIL_ID"
@@ -83,13 +83,14 @@ def find_appointments(district):
                 else:
                     print('No '+vaccine+' at: '+center_name+' for '+date)
 
-while True:
+while pin_codes:
     print("\nRunning check number: "+str(chk_no))
 
     try:
-        print("\nChecking for Pincode: "+pin_code)
-        centers = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+pin_code+"&date="+str(today), headers=my_headers).json()
-        find_appointments(centers)
+        for pin_code in pin_codes:
+            print("\nChecking for Pincode: "+str(pin_code))
+            centers = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+str(pin_code)+"&date="+str(today), headers=my_headers).json()
+            find_appointments(centers)
     except:
         print("API Error, will try again!")
         time.sleep(5)
